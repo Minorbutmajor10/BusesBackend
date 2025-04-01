@@ -1,17 +1,12 @@
 package com.Buses.model;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,8 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "bus")
@@ -33,8 +27,10 @@ public class Bus {
 	private String numeroBus;
 	private String placa;
 	
-	@CreatedDate
-    private LocalDateTime fechaCreacion;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
+	@Temporal(TemporalType.DATE)
+    private Date fechaCreacion;
     
     private String caracteristicas;
     private Boolean activo;
@@ -69,13 +65,7 @@ public class Bus {
 		this.placa = placa;
 	}
 
-	public LocalDateTime getFechaCreacion() {
-		return fechaCreacion;
-	}
-
-	public void setFechaCreacion(LocalDateTime fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
+	
 
 	public String getCaracteristicas() {
 		return caracteristicas;

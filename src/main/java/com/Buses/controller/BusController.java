@@ -1,6 +1,5 @@
 package com.Buses.controller;
 
-import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Buses.model.Bus;
 import com.Buses.service.BusService;
-import org.springframework.data.domain.Pageable; 
+import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
 @RestController
 @RequestMapping("/bus")
 public class BusController {
-    private final BusService busService; 
+	
+	@Autowired
+     BusService busService; 
     
     public BusController(BusService busService) {
         this.busService = busService;
@@ -33,7 +35,7 @@ public class BusController {
         return ResponseEntity.ok(busService.getAllBuses(pageable)); 
     }
 
-    @GetMapping("/fid/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<Bus> getBusById(@PathVariable Long id) {
         return ResponseEntity.ok(busService.getBusById(id));
     }
