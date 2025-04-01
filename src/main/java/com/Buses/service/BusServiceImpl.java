@@ -2,8 +2,7 @@ package com.Buses.service;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,11 +13,8 @@ import com.Buses.repository.BusRepository;
 @Service
 public class BusServiceImpl implements BusService {
 
-    private final BusRepository busRepository;
-
-    public BusServiceImpl(BusRepository busRepository) {
-        this.busRepository = busRepository;
-    }
+	@Autowired
+    BusRepository busRepository;
 
     @Override
     public Page<Bus> getAllBuses(Pageable pageable) {

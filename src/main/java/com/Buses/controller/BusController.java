@@ -20,12 +20,8 @@ import org.springframework.data.domain.Page;
 public class BusController {
 	
 	@Autowired
-     BusService busService; 
+    BusService busService; 
     
-    public BusController(BusService busService) {
-        this.busService = busService;
-    }
-
     @GetMapping
     public ResponseEntity<Page<Bus>> getAllBuses(
         @RequestParam(defaultValue = "0") int page,

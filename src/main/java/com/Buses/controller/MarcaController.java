@@ -19,10 +19,7 @@ public class MarcaController {
 	@Autowired
     MarcaService marcaService;
 
-    public MarcaController(MarcaService marcaService) {
-        this.marcaService = marcaService;
-    }
-    
+   
     @GetMapping
     public ResponseEntity<List<Marca>> getAllMarcas() {
         return ResponseEntity.ok(marcaService.getAllMarcas()); 
