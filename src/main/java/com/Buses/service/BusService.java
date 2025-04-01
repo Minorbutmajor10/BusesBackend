@@ -1,26 +1,15 @@
 package com.Buses.service;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
 
 import com.Buses.model.Bus;
-import com.Buses.repository.BusRepository;
 
 
-@Service
-public class BusService {
-
-	@Autowired
-	private BusRepository busRepository;
-	
-	
-	public List<Bus> findAll() {
-		return busRepository.findAll();
-	}
-	
-	public Bus findOne(Integer id) {
-		return busRepository.findById(id).orElse(null);
-	}
+public interface BusService {
+    Page<Bus> getAllBuses(Pageable pageable);
+    Bus getBusById(Long  id);
 }
