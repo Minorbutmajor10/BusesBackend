@@ -35,7 +35,15 @@ public class Bus {
     private String caracteristicas;
     private Boolean activo;
     
-    @ManyToOne
+    public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	@ManyToOne
     @JoinColumn(name = "marca_id")
     private Marca marca;
 
